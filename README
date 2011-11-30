@@ -1,8 +1,60 @@
+
 NoKidding (for SqueezeBox Radio)
 2011-
+===============================================================================
 
-what: configuration files/patches for SqueezeBox Radio, for usage in an environment for kids.
-author: Svante Hermansson, http://dillchip.com
+What: configuration files/patches for Logitech SqueezeBox Radio,
+      for usage in an environment for kids.
+Author: Svante Hermansson, http://dillchip.com
+===============================================================================
 
+Features:
+- Restrict volume on front panel (0-40)
+===============================================================================
+
+Details:
+These are some personal configurations to SqueezeBox Radio to make it suitable
+for keeping in the kids room. The idea is to lock-down features that should not
+be enabled on the unit's front panel. For full control, a remote control or the
+web interface can still be used.
+
+The changes are hacks in the somewhat poorly documented platform in the
+SqueezeBox.
+ - No warranty is given for the changes. 
+ - Apply them at your own risk.
+That said, I guess the risk is very low, and you should always be able to reset
+your device to factory settings if needed.
+===============================================================================
+
+Some step by step instructions to apply the patch for volume restriction:
+# make sure you have a SqueezeBox Radio
+# make sure you have the IP number of your Radio unit
+# make sure you have ssh enabled on your Radio unit
+
+# download to some working directory:
+...
+
+# enter nokidding directory:
+cd nokidding
+
+# create working directories:
+mkdir original updated
+
+#fetch original configuration file, default password is '1234':
+scp root@<<REPLACE_WITH_IP>>:/usr/share/jive/jive/slim/Player.lua original
+
+#check version via md5sum hash:
+md5sum original/Player.lua 
+#expected output: de116e4d938b24fc061003305e558af5  original/Player.lua
+#verify hash code, only continue and apply patch if same version as above!
+
+#make a copy to use for the patch
+cp original/Player.lua updated/
+
+# now apply patch
+patch updated/Player.lua < patches/Player.lua_patch_de116e4d938b24fc061003305e558af5
+
+# copy the updated file to your SqueezeBox Radio
+scp updated/Player.lua root@<<REPLACE_WITH_IP>>:/usr/share/jive/jive/slim/
 
 

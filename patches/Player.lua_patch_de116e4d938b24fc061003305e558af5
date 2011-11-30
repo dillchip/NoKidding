@@ -1,0 +1,2 @@
+1728a1729
+> 	vol = math.min(vol,40)  -- dillchip.com says hack!, works but can give some glitches
