@@ -1,0 +1,87 @@
+--- original/InputToActionMap.lua	2011-11-30 21:54:12.963858525 +0100
++++ updated/InputToActionMap.lua	2011-11-30 21:54:30.455858515 +0100
+@@ -72,13 +72,13 @@
+ 
+ keyActionMappings = {}
+ keyActionMappings.press = {
+-	[KEY_HOME] = "go_home_or_now_playing",
++	[KEY_HOME] = "play_preset_7",
+ 	[KEY_PLAY] = "play",
+-	[KEY_ADD] = "add",
+-	[KEY_BACK] = "back",
+-	[KEY_LEFT] = "back",
+-	[KEY_GO] = "go",
+-	[KEY_RIGHT] = "go",
++	[KEY_ADD] = "play_preset_9",
++	[KEY_BACK] = "disabled",
++	[KEY_LEFT] = "disabled",
++	[KEY_GO] = "pause",
++	[KEY_RIGHT] = "pause",
+ 	[KEY_PAUSE] = "pause",
+ 	[KEY_PRESET_1] = "play_preset_1",
+ 	[KEY_PRESET_2] = "play_preset_2",
+@@ -95,7 +95,7 @@
+ 	[KEY_VOLUME_DOWN] = "volume_down",
+ 	[KEY_PRINT] = "take_screenshot",
+ 	[KEY_POWER] = "power",
+-	[KEY_ALARM] = "go_alarms",
++	[KEY_ALARM] = "play_preset_8",
+ }
+ 
+ --Hmm, this won't work yet since we still look for KEY_PRESS in a lot of places, and would get double responses
+@@ -111,28 +111,39 @@
+ }
+ 
+ keyActionMappings.hold = {
+-	[KEY_HOME] = "go_home",
+-	[KEY_PLAY] = "create_mix",
+-	[KEY_ADD]  = "add_end",
+-	[KEY_BACK] = "go_home",
+-	[KEY_LEFT] = "go_home",
+-	[KEY_GO] = "add", --has no default assignment yet
+-	[KEY_RIGHT] = "add",
+-	[KEY_PAUSE] = "stop",
+-	[KEY_PRESET_1] = "set_preset_1",
+-	[KEY_PRESET_2] = "set_preset_2",
+-	[KEY_PRESET_3] = "set_preset_3",
+-	[KEY_PRESET_4] = "set_preset_4",
+-	[KEY_PRESET_5] = "set_preset_5",
+-	[KEY_PRESET_6] = "set_preset_6",
++	[KEY_HOME] = "play_preset_7",
++	[KEY_PLAY] = "play",
++	[KEY_ADD] = "play_preset_9",
++	[KEY_BACK] = "disabled",
++	[KEY_LEFT] = "disabled",
++	[KEY_GO] = "pause", --has no default assignment yet
++	[KEY_RIGHT] = "pause",
++	[KEY_PAUSE] = "pause",
++    [KEY_PRESET_1] = "play_preset_1",
++	[KEY_PRESET_2] = "play_preset_2",
++	[KEY_PRESET_3] = "play_preset_3",
++	[KEY_PRESET_4] = "play_preset_4",
++	[KEY_PRESET_5] = "play_preset_5",
++	[KEY_PRESET_6] = "play_preset_6",
++	[KEY_PLAY | KEY_PRESET_1] = "set_preset_1",
++	[KEY_PLAY | KEY_PRESET_2] = "set_preset_2",
++	[KEY_PLAY | KEY_PRESET_3] = "set_preset_3",
++	[KEY_PLAY | KEY_PRESET_4] = "set_preset_4",
++	[KEY_PLAY | KEY_PRESET_5] = "set_preset_5",
++	[KEY_PLAY | KEY_PRESET_6] = "set_preset_6",
++	[KEY_PLAY | KEY_HOME] = "set_preset_7",
++	[KEY_PLAY | KEY_ALARM] = "set_preset_8",
++	[KEY_PLAY | KEY_ADD] = "set_preset_9",
++	[KEY_PLAY | KEY_GO] = "go",
++	[KEY_PLAY | KEY_BACK] = "back",
+ 	[KEY_FWD] = "scanner_fwd",
+ 	[KEY_REW] = "scanner_rew",
+ 	[KEY_VOLUME_UP] = "volume_up",
+ 	[KEY_VOLUME_DOWN] = "volume_down",
++    [KEY_HOME  | KEY_FWD] = "go_home",
+ 	[KEY_REW | KEY_PAUSE] = "take_screenshot",  -- a stab at how to handle multi-press
+-	[KEY_BACK | KEY_PLAY] = "start_demo", 
+ 	[KEY_POWER] = "shutdown",
+-	[KEY_ALARM] = "go_alarms",
++	[KEY_ALARM] = "play_preset_8",
+ }
+ 
+ irActionMappings = {}

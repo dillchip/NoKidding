@@ -1,15 +1,19 @@
 
-NoKidding (for SqueezeBox Radio)
+NoKidding (for SqueezeBox Radio 7.6.0)
 2011-
 ===============================================================================
 
-What: configuration files/patches for Logitech SqueezeBox Radio,
+What: configuration files/patches for Logitech SqueezeBox Radio 7.6.0
       for usage in an environment for kids.
 Author: Svante Hermansson, http://dillchip.com
 ===============================================================================
 
 Features:
-- Restrict volume on front panel (0-40)
+- Restrict volume (0-40)              Don't let your kids ruin their ears!
+                                      For higher volume use another controller.
+- Restrict button functionality       Preset 1-6, play, pause, volume, skip etc
+                                      still work, but main menu is not possible
+                                      to reach.
 ===============================================================================
 
 Details:
@@ -24,10 +28,11 @@ SqueezeBox.
  - Apply them at your own risk.
 That said, I guess the risk is very low, and you should always be able to reset
 your device to factory settings if needed.
+The changes might work for Touch also, but I don't have one of those...
 ===============================================================================
 
 Some step by step instructions to apply the patch for volume restriction:
-# make sure you have a SqueezeBox Radio
+# make sure you have a SqueezeBox Radio 7.6.0
 # make sure you have the IP number of your Radio unit
 # make sure you have ssh enabled on your Radio unit
 
@@ -56,5 +61,47 @@ patch updated/Player.lua < patches/Player.lua_patch_de116e4d938b24fc061003305e55
 
 # copy the updated file to your SqueezeBox Radio
 scp updated/Player.lua root@<<REPLACE_WITH_IP>>:/usr/share/jive/jive/slim/
+
+# power cycle your unit
+
+===============================================================================
+
+Some step by step instructions to apply the patch for button restriction:
+# make sure you have a SqueezeBox Radio 7.6.0
+# make sure you have the IP number of your Radio unit
+# make sure you have ssh enabled on your Radio unit
+
+# download to some working directory:
+...
+
+# enter nokidding directory:
+cd nokidding
+
+# create working directories:
+mkdir original updated
+
+#fetch original configuration file, default password is '1234':
+scp root@<<REPLACE_WITH_IP>>:/usr/share/jive/jive/InputToActionMap.lua original
+
+#check version via md5sum hash:
+md5sum original/InputToActionMap.lua 
+#expected output: 1fe22e6eabee62122e29ba235c876beb  original/InputToActionMap.lua
+#verify hash code, only continue and apply patch if same version as above!
+
+#make a copy to use for the patch
+cp original/InputToActionMap.lua updated/
+
+# now apply patch
+patch updated/InputToActionMap.lua < patches/InputToActionMap.lua_patch_1fe22e6eabee62122e29ba235c876beb
+
+# copy the updated file to your SqueezeBox Radio
+scp updated/InputToActionMap.lua root@<<REPLACE_WITH_IP>>:/usr/share/jive/jive/InputToActionMap.lua
+
+# move one of the applets that interfer with InputToActionMap.lua
+ssh root@<<REPLACE_WITH_IP>>
+mv /usr/share/jive/applets/Shortcuts /usr/share/jive/applets_Shortcuts__moved
+
+# power cycle your unit
+
 
 
