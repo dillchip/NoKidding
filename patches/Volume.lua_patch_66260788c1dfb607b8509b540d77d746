@@ -1,0 +1,14 @@
+50a51,53
+> -- dillchip hack: restrict maximum volume level (default 100), to save the kid's hearing...
+> local RESTRICTED_MAXIMUM_VOLUME = 40
+> 
+120c123
+< 	local slider = Slider("volume_slider", -1, 100, self.volume,
+---
+> 	local slider = Slider("volume_slider", -1, RESTRICTED_MAXIMUM_VOLUME, self.volume,
+322,323c325,326
+< 	if volume > 100 then
+< 		new = 100
+---
+> 	if volume > RESTRICTED_MAXIMUM_VOLUME then
+> 		new = RESTRICTED_MAXIMUM_VOLUME

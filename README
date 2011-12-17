@@ -46,21 +46,21 @@ cd nokidding
 mkdir original updated
 
 #fetch original configuration file, default password is '1234':
-scp root@<<REPLACE_WITH_IP>>:/usr/share/jive/jive/slim/Player.lua original
+scp root@<<REPLACE_WITH_IP>>:/usr/share/jive/applets/SlimBrowser/Volume.lua original
 
 #check version via md5sum hash:
-md5sum original/Player.lua 
-#expected output: de116e4d938b24fc061003305e558af5  original/Player.lua
+md5sum original/Volume.lua 
+#expected output: 66260788c1dfb607b8509b540d77d746  original/Volume.lua
 #verify hash code, only continue and apply patch if same version as above!
 
 #make a copy to use for the patch
-cp original/Player.lua updated/
+cp original/Volume.lua updated/
 
 # now apply patch
-patch updated/Player.lua < patches/Player.lua_patch_de116e4d938b24fc061003305e558af5
+patch updated/Volume.lua < patches/Volume.lua_patch_66260788c1dfb607b8509b540d77d746
 
 # copy the updated file to your SqueezeBox Radio
-scp updated/Player.lua root@<<REPLACE_WITH_IP>>:/usr/share/jive/jive/slim/
+scp updated/Volume.lua root@<<REPLACE_WITH_IP>>:/usr/share/jive/applets/SlimBrowser/
 
 # power cycle your unit
 
