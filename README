@@ -10,7 +10,7 @@ Author: Svante Hermansson, http://dillchip.com
 
 Features:
 - Restrict volume (0-40)              Don't let your kids ruin their ears!
-                                      For higher volume use another controller.
+                                      For higher volume use e.g. web interface. 
 - Restrict button functionality       Preset 1-6, play, pause, volume, skip etc
                                       still work, but main menu is not possible
                                       to reach.
@@ -19,8 +19,8 @@ Features:
 Details:
 These are some personal configurations to SqueezeBox Radio to make it suitable
 for keeping in the kids room. The idea is to lock-down features that should not
-be enabled on the unit's front panel. For full control, a remote control or the
-web interface can still be used.
+be enabled on the unit's front panel. For (almost) full control, a remote
+control, the web interface or 3rd party application can still be used.
 
 The changes are hacks in the somewhat poorly documented platform in the
 SqueezeBox.
@@ -29,6 +29,16 @@ SqueezeBox.
 That said, I guess the risk is very low, and you should always be able to reset
 your device to factory settings if needed.
 The changes might work for Touch also, but I don't have one of those...
+
+Todo/Wishlist:
+- Increase preset selections to more than 6, by using the other unused buttons.
+- Easy album selection, using the big knob with a popup window.
+  (alternative: use Album Flow applet?)
+- Volume restriction with night mode. Lower maximum volume at night.
+- Web interface for settings.
+- Better patching, or making proper plugins/applets.
+- Better preset/album selection?
+
 ===============================================================================
 
 Some step by step instructions to apply the patch for volume restriction:
